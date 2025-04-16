@@ -7,6 +7,7 @@ public class LineOfSight : MonoBehaviour
     float startAimDir;
     [SerializeField]
     float fieldOfView = 45;
+    [SerializeField] LayerMask lmFOV;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -36,7 +37,7 @@ public class LineOfSight : MonoBehaviour
         for (int i = 0; i <= rays; i++)
         {
             Vector3 vertex;
-           RaycastHit2D rayCastHit = Physics2D.Raycast(viewStartPos, AngleToVector(angle), distancePlayerCanSee);
+           RaycastHit2D rayCastHit = Physics2D.Raycast(viewStartPos, AngleToVector(angle), distancePlayerCanSee,lmFOV);
           //  Debug.DrawRay(viewStartPos, AngleToVector(angle), Color.red, distancePlayerCanSee);
             if(rayCastHit.collider == null)
             {
@@ -45,7 +46,7 @@ public class LineOfSight : MonoBehaviour
             else
             {
                 vertex = rayCastHit.point;
-                Debug.Log(rayCastHit.transform.gameObject.name);
+             //   Debug.Log(rayCastHit.transform.gameObject.name);
             }
             points[tempIndex] = vertex;
 
@@ -65,7 +66,7 @@ public class LineOfSight : MonoBehaviour
         triangles[1] = 1;
         triangles[2] = 2;
 
-
+        mesh.bounds = new Bounds(viewStartPos, Vector3.one * 1000f);
         mesh.vertices = points;
         mesh.uv = uv;
         mesh.triangles = triangles;
