@@ -3,7 +3,7 @@ using UnityEngine;
 public class LineOfSight : MonoBehaviour
 {
     private Mesh mesh;
-    Vector3 viewStartPos = Vector3.zero;
+    Vector3 viewStartPos;
     float startAimDir;
     [SerializeField]
     float fieldOfView = 45;

@@ -19,11 +19,11 @@ public class LevelAssetsPlaced : MonoBehaviour
             {
                 if (array[i, j] == 1)
                 {
-                    Instantiate(BaseRoom, new Vector3(i * 5, j * 5, 0), Quaternion.identity);
+                    Instantiate(BaseRoom, new Vector3(i * 15, j * 15, 0), Quaternion.identity);
                 }
                 else if (array[i, j] == 2)
                 {
-                    GameObject temp = Instantiate(BaseHall, new Vector3(i * 5, j * 5, 0), Quaternion.identity);
+                    GameObject temp = Instantiate(BaseHall, new Vector3(i * 15, j * 15, 0), Quaternion.identity);
                     HallWayHandler tempHandler = temp.GetComponent<HallWayHandler>();
                     if (i - 1 >= 0)
                     {
@@ -73,11 +73,11 @@ public class LevelAssetsPlaced : MonoBehaviour
                 }
                 else if (array[i, j] == 3)
                 {
-                    Instantiate(StartLocation, new Vector3(i * 5, j * 5, 0), Quaternion.identity);
+                    Instantiate(StartLocation, new Vector3(i * 15, j * 15, 0), Quaternion.identity);
                 }
                 else if (array[i, j] == 0)
                 {
-                    Instantiate(BlankSpace, new Vector3(i * 5, j * 5, 0), Quaternion.identity);
+                    Instantiate(BlankSpace, new Vector3(i * 15, j * 15, 0), Quaternion.identity);
                 }
 
             }
