@@ -59,7 +59,11 @@ public class PlayerController : MonoBehaviour
             {
                 if(ray.transform.gameObject.tag == "Enemy")
                 {
-                    Destroy(ray.transform.gameObject);
+                    if(ray.transform.gameObject.GetComponent<EnemyManager>() != null)
+                    {
+                        ray.transform.gameObject.GetComponent<EnemyManager>().Kill();
+                    }
+                   
                 }
                 else
                 {

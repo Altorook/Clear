@@ -5,7 +5,7 @@ public class GenerateLevelArray : MonoBehaviour
     private int[,] LevelArray = new int[25, 25];
     [SerializeField] int inputSeed;
     [SerializeField] bool useSeed;
-    [SerializeField] int thisSeed;
+    [SerializeField] public int thisSeed;
     [SerializeField] LevelAssetsPlaced placeAssets;
     int currentX = 12;
     int currentY = 12;

@@ -6,10 +6,13 @@ public class LevelAssetsPlaced : MonoBehaviour
     [SerializeField] GameObject BaseRoom;
     [SerializeField] GameObject StartLocation;
     [SerializeField] GameObject BlankSpace;
+    [SerializeField] GenerateLevelArray levelArrayScript;
+    [SerializeField] EnemiesInScene eisScript;
+    int seedPoint;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        seedPoint = levelArrayScript.thisSeed;
     }
     public void InstLevel(int[,] array)
     {
@@ -19,7 +22,13 @@ public class LevelAssetsPlaced : MonoBehaviour
             {
                 if (array[i, j] == 1)
                 {
-                    Instantiate(BaseRoom, new Vector3(i * 15, j * 15, 0), Quaternion.identity);
+                    GameObject tempRoom = Instantiate(BaseRoom, new Vector3(i * 15, j * 15, 0), Quaternion.identity);
+                    if(tempRoom.GetComponent<RoomRandom>() != null)
+                    {
+                        seedPoint = tempRoom.GetComponent<RoomRandom>().RandomEnemySpawn(seedPoint,eisScript);
+                        seedPoint = tempRoom.GetComponent<RoomRandom>().RandomObstacle(seedPoint);
+
+                    }
                 }
                 else if (array[i, j] == 2)
                 {
