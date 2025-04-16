@@ -12,7 +12,10 @@ public class HallWayHandler : MonoBehaviour
     [SerializeField] GameObject leftPiece;
     [SerializeField] GameObject rightPiece;
 
-
+    [SerializeField] GameObject upCol;
+    [SerializeField] GameObject downCol;
+    [SerializeField] GameObject leftCol;
+    [SerializeField] GameObject rightCol;
     public bool upIsHall;
     public bool downIsHall;
     public bool leftIsHall;
@@ -30,18 +33,22 @@ public class HallWayHandler : MonoBehaviour
         if (hasUpConnection)
         {
             upPiece.SetActive(true);
+            upCol.SetActive(false);
         }
         if (hasDownConnection)
         {
             downPiece.SetActive(true);
+            downCol.SetActive(false);
         }
         if (hasLeftConnection)
         {
             leftPiece.SetActive(true);
+            leftCol.SetActive(false);
         }
         if (hasRightConnection)
         {
             rightPiece.SetActive(true);
+            rightCol.SetActive(false);
         }
 
         if(!upIsHall)
