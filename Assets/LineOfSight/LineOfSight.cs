@@ -17,7 +17,7 @@ public class LineOfSight : MonoBehaviour
     void LateUpdate()
     {
        
-        int rays = 50;
+        int rays = 250;
         float angle = startAimDir;
         float angleIncrease;
         float distancePlayerCanSee = 25;

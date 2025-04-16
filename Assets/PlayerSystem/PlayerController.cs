@@ -8,13 +8,16 @@ public class PlayerController : MonoBehaviour
     float xVel;
     float yVel;
     [SerializeField] float moveSpeed;
+    [SerializeField] Rigidbody2D rb;
+    [SerializeField]
+    LayerMask lmAvoidPlayer;
     void Start()
     {
         
     }
     private void FixedUpdate()
     {
-        transform.position = new Vector3(this.transform.position.x + xVel * moveSpeed, this.transform.position.y + yVel*moveSpeed,0);
+        rb.linearVelocity = new Vector3(xVel * moveSpeed,yVel*moveSpeed,0);
     }
     // Update is called once per frame
     void Update()
@@ -54,7 +57,7 @@ public class PlayerController : MonoBehaviour
         if(Input.GetMouseButtonDown(0))
         {
             Debug.DrawRay(this.transform.position, Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position, Color.red, 100);
-            RaycastHit2D ray = Physics2D.Raycast(this.transform.position, Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position, 40);
+            RaycastHit2D ray = Physics2D.Raycast(this.transform.position, Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position, 40,lmAvoidPlayer);
             if(ray.collider != null)
             {
                 if(ray.transform.gameObject.tag == "Enemy")
