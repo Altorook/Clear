@@ -1,3 +1,5 @@
+
+using System;
 using UnityEngine;
 
 public class GenerateLevelArray : MonoBehaviour
@@ -28,14 +30,15 @@ public class GenerateLevelArray : MonoBehaviour
     {
         if (useSeed)
         {
-            Random.InitState(inputSeed);
+            UnityEngine.Random.InitState(inputSeed);
             thisSeed = inputSeed;
         }
         else
         {
-            int randSeed = Random.Range(0, 100000);
+            UnityEngine.Random.InitState((int)DateTime.Now.Ticks);
+            int randSeed = UnityEngine.Random.Range(0, 100000);
             thisSeed = randSeed;
-            Random.InitState(randSeed);
+            UnityEngine.Random.InitState(randSeed);
         }
         CreateLevelArray();
     }
@@ -56,7 +59,7 @@ public class GenerateLevelArray : MonoBehaviour
             }
             else
             {
-                int tempRand = Random.Range(0, 4);
+                int tempRand = UnityEngine.Random.Range(0, 4);
                 if(tempRand == 0)
                 {
                     if(currentX+1 < LevelArray.GetLength(0))
@@ -117,7 +120,7 @@ public class GenerateLevelArray : MonoBehaviour
             }
             else
             {
-                int tempRand = Random.Range(0, 4);
+                int tempRand = UnityEngine.Random.Range(0, 4);
                 if (tempRand == 0)
                 {
                     if (currentX + 1 < LevelArray.GetLength(0))
@@ -177,7 +180,7 @@ public class GenerateLevelArray : MonoBehaviour
             }
             else
             {
-                int tempRand = Random.Range(0, 4);
+                int tempRand = UnityEngine.Random.Range(0, 4);
                 if (tempRand == 0)
                 {
                     if (currentX + 1 < LevelArray.GetLength(0))
@@ -257,7 +260,7 @@ public class GenerateLevelArray : MonoBehaviour
     public void AssignRoomType(bool isYAxis, bool isAdd)
     {
         
-        int tempRand = Random.Range(0, 3);
+        int tempRand = UnityEngine.Random.Range(0, 3);
         if (tempRand == 0)
         {
 

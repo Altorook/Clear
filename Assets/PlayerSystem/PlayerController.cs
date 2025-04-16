@@ -56,7 +56,7 @@ public class PlayerController : MonoBehaviour
 
         if(Input.GetMouseButtonDown(0))
         {
-            Debug.DrawRay(this.transform.position, Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position, Color.red, 100);
+            Debug.DrawRay(this.transform.position, Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position, Color.red, .5f);
             RaycastHit2D ray = Physics2D.Raycast(this.transform.position, Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position, 40,lmAvoidPlayer);
             if(ray.collider != null)
             {
